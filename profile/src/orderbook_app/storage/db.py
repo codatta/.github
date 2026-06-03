@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import asyncpg
 
 
@@ -34,8 +36,8 @@ async def insert_update(dsn: str, venue: str, symbol: str, ts, bids, asks) -> No
             venue,
             symbol,
             ts,
-            bids,
-            asks,
+            json.dumps(bids),
+            json.dumps(asks),
         )
     finally:
         await conn.close()

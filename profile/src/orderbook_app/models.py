@@ -28,4 +28,4 @@ class OrderBookUpdate(BaseModel):
 
 
 def parse_levels(levels: Iterable[Iterable[str | float]]) -> list[OrderBookLevel]:
-    return [OrderBookLevel(price=float(price), size=float(size)) for price, size in levels]
+    return [OrderBookLevel(price=float(row[0]), size=float(row[1])) for row in levels]

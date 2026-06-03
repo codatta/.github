@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import json
 
 from orderbook_app.config import AppConfig
 from orderbook_app.services.simulated import generate_simulated_update
@@ -17,8 +16,8 @@ async def run_simulated_ingest() -> None:
         update.venue,
         update.symbol,
         update.ts,
-        json.loads(update.model_dump_json())["bids"],
-        json.loads(update.model_dump_json())["asks"],
+        update.model_dump()["bids"],
+        update.model_dump()["asks"],
     )
 
 
